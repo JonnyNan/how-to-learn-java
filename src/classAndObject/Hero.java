@@ -12,6 +12,30 @@ public class Hero {
 
     int moveSpeed;
 
+    void keng(){
+        System.out.println("keng duiyou");
+    }
+
+    float getArmor(){
+        return armor;
+    }
+
+    void addSpeed(int speed){
+        moveSpeed += speed;
+    }
+
+    void legendary(){
+        System.out.println("chaoshen!");
+    }
+
+    float getHp() {
+        return hp;
+    }
+
+    void recovery(float blood){
+        hp = hp + blood;
+    }
+
     public static void main(String[] args) {
         Hero garen = new Hero();
         garen.name = "garen";
@@ -24,6 +48,11 @@ public class Hero {
         teemo.hp = 383f;
         teemo.armor = 14f;
         teemo.moveSpeed = 330;
+
+        System.out.println(garen.name + " 当前的血量是 " +garen.hp);
+        System.out.println("回血100");
+        garen.recovery(100);
+        System.out.println("现在的血量是:" + garen.hp);
 
     }
 }
