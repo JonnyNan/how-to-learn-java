@@ -1,4 +1,4 @@
-package variable.finalVariable;
+package javaBasic.variable.finalVariable;
 
 /**
  *  当一个变量被final修饰的时候，该变量只有一次赋值的机会

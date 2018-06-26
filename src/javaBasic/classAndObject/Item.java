@@ -1,4 +1,4 @@
-package classAndObject;
+package javaBasic.classAndObject;
 //练习
 
 /**

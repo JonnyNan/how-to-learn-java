@@ -1,4 +1,4 @@
-package variable.variableActionScope;
+package javaBasic.variable.variableActionScope;
 
 /**
  * 变量处于不同的位置，有不同的名称
