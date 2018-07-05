@@ -3,13 +3,13 @@ package javaBasic.classAndObject;
 //例子，类和对象，英雄是一个类，他有很多属性。比如 名字 血量 移动速度。
 //通过 new 关键字，可以由类 创建一个实际存在的对象。比如 garen 和 teemo。
 public class Hero {
-    String name;
+    public String name;
 
-    float hp;
+    public float hp;
 
-    float armor;
+    public float armor;
 
-    int moveSpeed;
+    public int moveSpeed;
 
     void keng(){
         System.out.println("keng duiyou");

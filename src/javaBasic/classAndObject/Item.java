@@ -16,8 +16,8 @@ package javaBasic.classAndObject;
  * 长剑 350
  */
 public class Item {
-    String name;
-    int price;
+    public String name;
+    public int price;
 
     public static void main(String[] args) {
         Item xuepin = new Item();
