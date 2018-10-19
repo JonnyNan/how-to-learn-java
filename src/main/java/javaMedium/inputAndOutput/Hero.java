@@ -13,4 +13,8 @@ public class Hero implements Serializable {
     private static final long SERIAL_VERSIOUID = 1L;
     public String name;
     public float hp;
+
+    public Hero(String name){
+        this.name = name;
+    }
 }

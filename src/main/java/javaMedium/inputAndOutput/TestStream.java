@@ -2,6 +2,7 @@ package javaMedium.inputAndOutput;
 
 import org.testng.annotations.Test;
 
+import javax.sound.midi.SoundbankResource;
 import java.io.*;
 import java.util.Arrays;
 
@@ -187,7 +188,7 @@ public class TestStream {
             //以字符流的形式读取文件所有内容
             fr.read(all);
             for (char b : all
-                 ) {
+            ) {
                 System.out.println(b);
             }
         } catch (IOException e) {
@@ -242,14 +243,81 @@ public class TestStream {
         try(  FileOutputStream fos = new FileOutputStream(f);
               DataOutputStream dos = new DataOutputStream(fos);
         ){
-           dos.writeBoolean(true);
-           dos.writeInt(30);
-           dos.writeUTF("hehe");
+            dos.writeBoolean(true);
+            dos.writeInt(30);
+            dos.writeUTF("hehe");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void m10(){
+        //创建一个Hero garen
+        //要把hero对象直接保存在文件上，务必让hero类实现serializable接口
+        Hero h = new Hero("garen");
+        h.name = "garen";
+        h.hp = 616;
+
+        //准备一个文件用于保存该对象
+        File f = new File("d:/garen.lol");
+
+
+        try(
+                //创建对象输出流
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+//                创建对象输入流
+                FileInputStream fis = new FileInputStream(f);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+        ){
+            oos.writeObject(h);
+            Hero h2 = (Hero) ois.readObject();
+            System.out.println(h2.name);
+            System.out.println(h2.hp);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void m11(){
+
+        Hero []hs = new Hero[10];
+        for (int i = 0; i <hs.length ; i++) {
+            hs[i]=new Hero("garen" +i);
+        }
+        File f = new File("d:/garens.lol");
+        try(
+                //创建对象输出流
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+//                创建对象输入流
+                FileInputStream fis = new FileInputStream(f);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+        ){
+            oos.writeObject(hs);
+            Hero []hs2 = (Hero[]) ois.readObject();
+            for (Hero h:hs2
+            ) {
+                System.out.println(h.name);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
