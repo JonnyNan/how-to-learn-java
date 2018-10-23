@@ -8,7 +8,7 @@ import java.util.LinkedList;
  */
 public class MyStack implements Stack{
 
-    LinkedList<Hero> heros = new LinkedList<>();
+    private LinkedList<Hero> heros = new LinkedList<>();
 
     @Override
     public void push(Hero h) {
