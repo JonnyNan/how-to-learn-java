@@ -19,8 +19,8 @@
 
     <!--开启注解扫描，bean对象本身也可以通过注解来配置-->
     <context:component-scan base-package="javaFrameWork.myspring"/>
-    
 
+    <aop:aspectj-autoproxy/>
     <!--<bean name="category" class="javaFrameWork.myspring.pojo.Category">-->
         <!--<property name="name" value="category 1" />-->
     <!--</bean>-->
@@ -32,17 +32,17 @@
 
     <!--<bean name="productService" class="javaFrameWork.myspring.service.ProductService"/>-->
 
-    <bean id="loggerAspect" class="javaFrameWork.myspring.aspect.LoggerAspect">
+    <!--<bean id="loggerAspect" class="javaFrameWork.myspring.aspect.LoggerAspect">-->
 
-    </bean>
+    <!--</bean>-->
 
-    <aop:config>
-        <aop:pointcut id="loggerCutpoint"
-                      expression="execution(* javaFrameWork.myspring.service.ProductService.*(..) )"/>
-        <aop:aspect id="logAspect" ref="loggerAspect">
-            <aop:around pointcut-ref="loggerCutpoint" method="log"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="loggerCutpoint"-->
+                      <!--expression="execution(* javaFrameWork.myspring.service.ProductService.*(..) )"/>-->
+        <!--<aop:aspect id="logAspect" ref="loggerAspect">-->
+            <!--<aop:around pointcut-ref="loggerCutpoint" method="log"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
 
 </beans>
