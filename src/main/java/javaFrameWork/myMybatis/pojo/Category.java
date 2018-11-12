@@ -2,6 +2,8 @@ package javaFrameWork.myMybatis.pojo;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @description: Todo
  * @author: JonnyNan
@@ -12,4 +14,5 @@ import lombok.Data;
 public class Category {
      private Integer id;
      private String name;
+     private List<Product> productList;
 }

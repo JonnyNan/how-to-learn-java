@@ -4,7 +4,52 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="javaFrameWork.myMybatis.pojo">
+
+    <resultMap id="categoryBean" type="Category">
+        <id property="id" column="cid"/>
+        <result property="name" column="cname"/>
+
+        <!-- 一对多的关系 -->
+        <!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 -->
+        <collection property="productList" ofType="Product">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="price" column="price"/>
+        </collection>
+    </resultMap>
+
     <select id="listCategory" resultType="Category">
             select * from   category_
         </select>
+
+    <!-- 关联查询分类和产品表 -->
+    <select id="listCategoryWithProduct" resultMap="categoryBean">
+            select c.* ,p.*,c.id 'cid',p.id 'pid',c.name 'cname',p.name 'pname'
+            from
+            category_ c
+            left join
+            product_ p
+            on c.id = p.cid;
+        </select>
+
+
+    <insert id="addCategory" parameterType="Category">
+        insert into category_ (name) values (#{name})
+    </insert>
+
+    <delete id="delCategory" parameterType="Category">
+        delete from category_ where id = #{id}
+    </delete>
+
+    <select id="getCategoryById" parameterType="int" resultType="Category">
+        select * from category_ where id = #{id}
+    </select>
+
+    <select id="listCategoryByName" parameterType="string" resultType="Category">
+        select * from category_ where name like concat('%',#{0},'%')
+    </select>
+
+    <select id="listCategoryByIdAndName" parameterType="map" resultType="Category">
+        select * from category_ where id >#{id} and name like concat('%',#{name},'%')
+    </select>
 </mapper>
