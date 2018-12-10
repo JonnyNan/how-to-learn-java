@@ -164,5 +164,15 @@ public class TestMybatis {
 
     }
 
+    @Test
+    public void m2(){
+
+        String str = "良品铺子 sadjksa店铺";
+        System.out.println(str.contains("良品铺子"));
+        System.out.println(str.contains("("));
+        System.out.println(str.contains(")"));
+
+    }
+
 
 }
